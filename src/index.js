@@ -17,11 +17,13 @@ let rightElement = 0;
 // function set position
 function setPositionElement(element, container){
 	widthScreen = document.body.clientWidth || window.innerWidth;
-	scrollPage = document.documentElement.scrollTop || window.scrollY;
+	scrollPage = window.pageYOffset;
 
 	// control element
 	distanceElementTop = element.offsetTop;
 	widthElement = element.offsetWidth + 'px';	
+
+	// console.log('w: ' + widthScreen + ' / scroll: ' + scrollPage + ' / distanceElementTop: ' + distanceElementTop + ' / widthElement: ' + widthElement);
 
 	// container
 	containerElement = container || document.querySelector('.container');
@@ -38,10 +40,10 @@ function setPositionElement(element, container){
 }
 
 // event resize
-document.getElementsByTagName("body")[0].onresize = function() { setPositionElement(element); };
+window.onresize = function() { setPositionElement(element); };
 
 // event scroll
-document.getElementsByTagName("body")[0].onscroll = function() { setPositionElement(element); };
+window.onscroll = function() { setPositionElement(element); };
 
 // event load
-document.getElementsByTagName("body")[0].onload = function() { setPositionElement(element); };
+window.onload = function() { setPositionElement(element); };
